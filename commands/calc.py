@@ -7,7 +7,7 @@ class Calculator(commands.Cog):
     @commands.command()
     async def calc(self, ctx, *, equation=None):
         if equation is None:
-            await ctx.send("You need to use numbers!", ephemeral=True)
+            await ctx.send("You need to use numbers!")
             return
 
         try:
