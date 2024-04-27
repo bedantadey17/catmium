@@ -1,4 +1,4 @@
-import env,discord,os
+import env,discord,os,logging
 from discord.ext import commands
 
 intents = discord.Intents.all()
@@ -17,5 +17,12 @@ async def on_ready():
 @bot.event
 async def setup_hook():
     await load_extensions()
+
+logging.basicConfig(filename='logs.txt', level=logging.ERROR)
+
+@bot.event
+async def on_command_error(ctx, error):
+    logging.error(f"An error occurred: {error}")
+
 
 bot.run(env.DISCORD_API_TOKEN)
